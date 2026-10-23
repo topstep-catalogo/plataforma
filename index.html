@@ -204,8 +204,8 @@
       .wa-float svg{width:30px;height:30px;fill:#fff}
 
       /* WhatsApp chat widget */
-      .wa-widget{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:14px}
-      .wa-fab{position:relative;width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.45);animation:waPulse 2.6s ease-out infinite;flex:none}
+      .wa-widget{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:14px;pointer-events:none}
+      .wa-fab{position:relative;width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.45);animation:waPulse 2.6s ease-out infinite;flex:none;pointer-events:auto}
       .wa-fab:hover{background:#1eb856}
       .wa-fab svg{width:30px;height:30px;fill:#fff}
       .wa-badge{position:absolute;top:-3px;right:-3px;width:21px;height:21px;border-radius:50%;background:var(--red);color:#fff;font-size:.72rem;font-weight:800;display:grid;place-items:center;border:2px solid var(--bg)}
@@ -746,8 +746,8 @@
       }
       function sendWhats(lines, msgEl){
         var text = lines.filter(function(l){ return l !== null; }).join("\n");
-        window.open(waLink(text), "_blank");
         if (msgEl) msgEl.classList.add("show");
+        window.location.href = waLink(text);
       }
 
       document.getElementById("form-cadastro").addEventListener("submit", function(e){
@@ -835,7 +835,7 @@
       function waChatSend(text){
         text = (text || "").trim();
         if (!text) text = "Olá! Vim pela plataforma para lojistas da TOPstep e quero mais informações.";
-        window.open(waLink(text), "_blank");
+        window.location.href = waLink(text);
       }
       document.getElementById("wa-form").addEventListener("submit", function(e){
         e.preventDefault();
